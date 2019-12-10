@@ -49,9 +49,9 @@ def findARestaurant(mealType, location):
             imageURL = ("https://drive.google.com/file/d/1vcdiUfGioiJHYFzspCO4f5NmXZl0pj30/view?usp=sharing")
         # 7. Return a dictionary containing the restaurant name, address, and image url
             restaurantInfo = {'name': restaurant_name, 'address': restaurant_address, 'image': imageURL}
-        print "Restaurant Name: %s" % restaurantInfo['name']
-        print "Restaurant Address: %s" % restaurantInfo['address']
-        print "Image: %s \n" % restaurantInfo['image']
+        print ("Restaurant Name: " + restaurantInfo['name'])
+        print ("Restaurant Address: " + restaurantInfo['address'])
+        print ("Image: %s \n" % restaurantInfo['image'])
         return restaurantInfo
     else:
         print "No Restaurants Found for %s" % location
