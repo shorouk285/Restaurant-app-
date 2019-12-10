@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import httplib2
 import json
 
