@@ -19,7 +19,7 @@
 3. Run vagrant up then vagrant ssh
 4. Make sure that  database required for this project python database_setup.py & python lotsofmenus.py included in the folder
 5. Run the application `python project.py`
-6. Open your favorite browser and head to [(http://localhost:8000)] and enjoy the application.
+6. Open your favorite browser and head to [http://localhost:8000] and enjoy the application.
 
 
 ### We're using the Vagrant software to configure and manage the VM. Here are the tools you'll need to install to get it running:
@@ -61,7 +61,7 @@ Now type `python database_setup.py` to initialize the database.
 
 Type python `lotsofmenus.py` to populate the database with restaurants and menu items. (Optional)
 
-Type python project.py to run the Flask web server. In your browser visit [localhost:8000] to view the restaurant menu app. You should be able to view, add, edit, and delete menu items and restaurants.
+Type python project.py to run the Flask web server. In your browser visit [http://localhost:8000] to view the restaurant menu app. You should be able to view, add, edit, and delete menu items and restaurants.
 
 ## References
 This code is based on Udacity Course.
