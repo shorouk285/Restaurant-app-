@@ -14,6 +14,12 @@ class User(Base):
     email = Column(String(250), nullable=False)
     picture = Column(String(250))
 
+    def hash_password(self, password):
+        self.password_hash = pwd_context.encrypt(password)
+
+    def verify_password(self, password):
+        return pwd_context.verify(password, self.password_hash)
+    
     @property
     def serialize(self):
         return {
