@@ -10,6 +10,7 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 foursquare_client_id = "TSJYJL4NYJPNKRRXTPF40DBOP34D5WJLBTXSUYEQOIDZCHDJ"
 foursquare_client_secret = "BYES1GT04AIEYRTDHXK1KLFBZ5KGTLI4WKB2Z4IN5KVAXZCK"
+google_api_key = "AIzaSyCluVT5yELlVqmZEdOrBRub3CkKzFfVobw"
 
 
 def findARestaurant(mealType, location):
@@ -17,10 +18,7 @@ def findARestaurant(mealType, location):
     latitude, longitude = getGeocodeLocation(location)
     # 2.  Use foursquare API to find a nearby restaurant with the latitude, longitude, and mealType strings.
     # HINT: format for url will be something like https://api.foursquare.com/v2/venues/search?client_id=CLIENT_ID&client_secret=CLIENT_SECRET&v=20130815&ll=40.7,-74&query=sushi
-    url = ("https://api.foursquare.com/v2/venues/search?client_id=%s \
-          &client_secret=%s&v=20130815&ll=%s,%s&query=%s"
-           % (foursquare_client_id, foursquare_client_secret,
-              latitude, longitude, mealType))
+    url = ("https://api.foursquare.com/v2/venues/search?client_id=%s&client_secret=%s&v=20130815&ll=%s,%s&query=%s" % (foursquare_client_id, foursquare_client_secret, latitude, longitude, mealType))
     h = httplib2.Http()
     result = json.loads(h.request(url, 'GET')[1])
     # 3. Grab the first restaurant
@@ -33,28 +31,26 @@ def findARestaurant(mealType, location):
         for i in restaurant_address:
             address += i + " "
         restaurant_address = address
-        # 4.  Get a  300x300 picture of the restaurant using the venue_id (you can change this by altering the 300x300 value in the URL or replacing it with 'orginal' to get the original picture
-        url = ('https://api.foursquare.com/v2/venues/%s/photos?client_id=%s \
-                &v=20150603&client_secret=%s'
-               % ((venue_id, foursquare_client_id, foursquare_client_secret)))
+        #4.  Get a  300x300 picture of the restaurant using the venue_id (you can change this by altering the 300x300 value in the URL or replacing it with 'orginal' to get the original picture
+        url = ('https://api.foursquare.com/v2/venues/%s/photos?client_id=%s&v=20150603&client_secret=%s' % (venue_id,foursquare_client_id,foursquare_client_secret))
         result = json.loads(h.request(url, 'GET')[1])
-        # 5.  Grab the first image
+		#5.  Grab the first image
         if result['response']['photos']['items']:
-            firstpic = result['response']['photos']['items'][0]
-            prefix = firstpic['prefix']
-            suffix = firstpic['suffix']
-            imageURL = prefix + "300x300" + suffix
-        # 6. If no image is available, insert default a image url
+			firstpic = result['response']['photos']['items'][0]
+			prefix = firstpic['prefix']
+			suffix = firstpic['suffix']
+			imageURL = prefix + "300x300" + suffix
         else:
-            imageURL = ("https://drive.google.com/file/d/1vcdiUfGioiJHYFzspCO4f5NmXZl0pj30/view?usp=sharing")
-        # 7. Return a dictionary containing the restaurant name, address, and image url
-            restaurantInfo = {'name': restaurant_name, 'address': restaurant_address, 'image': imageURL}
-        print ("Restaurant Name: " + restaurantInfo['name'])
-        print ("Restaurant Address: " + restaurantInfo['address'])
-        print ("Image: %s \n" % restaurantInfo['image'])
+			#6.  if no image available, insert default image url
+			imageURL = "http://pixabay.com/get/8926af5eb597ca51ca4c/1433440765/cheeseburger-34314_1280.png?direct"
+		#7.  return a dictionary containing the restaurant name, address, and image url
+        restaurantInfo = {'name': restaurant_name, 'address': restaurant_address, 'image': imageURL}
+        print "Restaurant Name: %s " % restaurantInfo['name']
+        print "Restaurant Address: %s " % restaurantInfo['address']
+        print "Image: %s \n" % restaurantInfo['image']
         return restaurantInfo
     else:
-        print "No Restaurants Found for %s" % location
+        print "No Restaurants Found for %s" %location
         return "No Restaurants Found"
 
 
