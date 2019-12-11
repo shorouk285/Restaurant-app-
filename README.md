@@ -34,12 +34,12 @@ If you don't already have Git installed, download Git from **git-scm.com**. Inst
 
 
 #### VirtualBox
-VirtualBox is the software that actually runs the VM. You can download it from **virtualbox.org**, here. Install the platform package for your operating system. You do not need the extension pack or the SDK. You do not need to launch VirtualBox after installing it.
+VirtualBox is the software that actually runs the VM. You can download it from [https://www.virtualbox.org], here. Install the platform package for your operating system. You do not need the extension pack or the SDK. You do not need to launch VirtualBox after installing it.
 
 **Ubuntu 14.04 Note**: If you are running Ubuntu 14.04, install VirtualBox using the Ubuntu Software Center, not the virtualbox.org web site. Due to a reported bug, installing VirtualBox from the site may uninstall other software you need.
 
 #### Vagrant
-Vagrant is the software that configures the VM and lets you share files between your host computer and the VM's filesystem. You can download it from **vagrantup.com**. Install the version for your operating system.
+Vagrant is the software that configures the VM and lets you share files between your host computer and the VM's filesystem. You can download it from [www.vagrantup.com]. Install the version for your operating system.
 
 **Windows Note**: The Installer may ask you to grant network permissions to Vagrant or make a firewall exception. Be sure to allow this.
 
